@@ -1,0 +1,24 @@
+<html>
+  <head>
+    <title>SciComp BioImage Analysis Projects at JIC</title>
+  </head>
+  <body>
+    <h1>SciComp BioImage Analysis Projects at JIC</h1>
+  {% for proj in projects %}
+
+    <h2>{{ proj.info["description"] }}</h2>
+
+    {% if proj.image_fpath %}
+    <img src="{{ proj.image_fpath }}" />
+    {% endif %}
+
+    {% if "github" in proj.info %}
+    <p>
+    <a href="{{ proj.info['github'] }}">Source code on GitHub</a>
+    </p>
+    {% endif %}
+
+
+  {% endfor %}
+  </body>
+</html>
