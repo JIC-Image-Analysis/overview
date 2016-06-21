@@ -3,3 +3,5 @@ description: Identify and characterise plasmodesmata
 customers:
   - Cecilia Cheval
   - Christine Faulkner
+public: True
+github: https://github.com/JIC-CSB/find-plasmodesmata
