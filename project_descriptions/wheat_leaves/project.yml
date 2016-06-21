@@ -3,3 +3,5 @@ description: Segment wheat leaves making use of anisotropy in the tissue structu
 customers:
   - Amelia Frizell-Armitage
   - Cristobal Uauy
+public: True
+github: https://github.com/JIC-CSB/wheat-leaf-segmentation
