@@ -35,9 +35,22 @@
             </section>
 
             <div class="row">
+
               <div class="col-md-6">
                 <section>
-                  <h3>Links</h3>
+                  <h4>Project supporting</h4>
+
+                  {% for name in proj.info["customers"] %}
+                  <ul>
+                    <li>{{ name }}</li>
+                  </ul>
+                  {% endfor %}
+                </section>
+              </div>  <!-- col-md-6 -->
+
+              <div class="col-md-6">
+                <section>
+                  <h4>Links</h4>
                   <ul>
                   {% if "github" in proj.info %}
                   <li> GitHub repo: <a href="{{ proj.info['github'] }}">{{ proj.info['github'] }}</a> </li>
@@ -49,17 +62,6 @@
                 </section>
               </div>  <!-- col-md-6 -->
 
-              <div class="col-md-6">
-                <section>
-                  <h3>Project supporting</h3>
-
-                  {% for name in proj.info["customers"] %}
-                  <ul>
-                    <li>{{ name }}</li>
-                  </ul>
-                  {% endfor %}
-                </section>
-              </div>  <!-- col-md-6 -->
             </div>  <!-- row -->
           </div>  <!-- project-info col-md-8 -->
         </div>  <!-- row -->
