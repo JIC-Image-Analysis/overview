@@ -1,10 +1,11 @@
 ---
-name: Ungerminated pollen grain quantification
+name: Pollen grain germination quantification
 description: >
-  Script to aid in the quantification of the number of ungerminated pollen
-  grains.  The script identifies and counts both the number of pollen grains and
-  the number of pollen tubes. By subtracting the number of pollen tubes from the
-  number of pollen grains the number of ungerminated grains can be quantified.
+  Script to aid in the quantification of the number of germinated vs
+  ungerminated pollen grains.  The script identifies and counts both the number
+  of pollen grains and the number of pollen tubes. By subtracting the number of
+  pollen tubes from the number of pollen grains the number of ungerminated grains
+  can be quantified.
 customers:
   - Jingyi Zhang
   - Xiaogi Feng
