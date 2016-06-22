@@ -3,6 +3,7 @@
 import os
 import os.path
 import shutil
+from distutils.dir_util import copy_tree
 
 import yaml
 from slugify import slugify
@@ -41,7 +42,7 @@ class BioimageProject(object):
         if os.path.isfile(input_image):
             if not os.path.isdir(image_dir):
                 os.makedirs(image_dir)
-            image_fname = slugify(unicode(self.info["description"])) + ".png"
+            image_fname = slugify(unicode(self.info["name"])) + ".png"
             output_image = os.path.join(image_dir, image_fname)
             shutil.copy(input_image, output_image)
             self.image_fpath = os.path.join("images", image_fname)
@@ -54,8 +55,24 @@ def load_template(template_fname):
     template = template_environment.get_template(template_fname)
     return template
 
+def copy_supporting_files():
+    """Copy javascript, CSS and font files to output directory."""
+
+    support_dirs = ['css',]
+#   support_dirs = ['js', 'css', 'fonts']
+
+    for dirname in support_dirs:
+        source_path = os.path.join(TEMPLATE_DIR, dirname)
+        dest_path = os.path.join(BUILD_DIR, dirname)
+        copy_tree(source_path, dest_path)
+
 
 def build_site():
+    if not os.path.isdir(BUILD_DIR):
+        os.mkdir(BUILD_DIR)
+
+    copy_supporting_files()
+
     projects = []
     for proj_name in os.listdir(PROJECTS_DIR):
         proj_dir = os.path.join(PROJECTS_DIR, proj_name)

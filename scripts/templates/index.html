@@ -1,24 +1,69 @@
 <html>
   <head>
     <title>SciComp BioImage Analysis Projects at JIC</title>
+    <meta charset="utf-8"/>
+    <link rel="stylesheet" type="text/css" href="css/bioimage-projects.css">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans|Oswald" rel="stylesheet"> 
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
   </head>
   <body>
-    <h1>SciComp BioImage Analysis Projects at JIC</h1>
-  {% for proj in projects %}
+    <div class="container">
+      <h1>SciComp BioImage Analysis Projects at JIC</h1>
+      {% for proj in projects %}
 
-    <h2>{{ proj.info["description"] }}</h2>
+      <article class="project">
+        <header>
+          <h2>{{ proj.info["name"] }}</h2>
+        </header>
 
-    {% if proj.image_fpath %}
-    <img src="{{ proj.image_fpath }}" />
-    {% endif %}
+        <div class="row">
+          <div class="col-md-4">
+            {% if proj.image_fpath %}
+            <figure>
+              <img class="img-responsive" src="{{ proj.image_fpath }}" alt="Image illustrating algorithm" />
+            </figure>
+            {% endif %}
+          </div>  <!-- col-md-4 -->
 
-    {% if "github" in proj.info %}
-    <p>
-    <a href="{{ proj.info['github'] }}">Source code on GitHub</a>
-    </p>
-    {% endif %}
+          <div class="col-md-8">
+            <section>
+              <p>{{ proj.info["description"] }}</p>
+            </section>
+
+            <div class="row">
+              <div class="col-md-6">
+                <section>
+                  <h3>Links</h3>
+                  <ul>
+                  {% if "github" in proj.info %}
+                  <li> GitHub repo: <a href="{{ proj.info['github'] }}">{{ proj.info['github'] }}</a> </li>
+                  {% endif %}
+                  {% if "publication" in proj.info %}
+                  <li> Publication: <a href="{{ proj.info['publication'] }}">{{ proj.info['publication'] }}</a> </li>
+                  {% endif %}
+                  </ul>
+                </section>
+              </div>  <!-- col-md-6 -->
+
+              <div class="col-md-6">
+                <section>
+                  <h3>Project supporting</h3>
+
+                  {% for name in proj.info["customers"] %}
+                  <ul>
+                    <li>{{ name }}</li>
+                  </ul>
+                  {% endfor %}
+                </section>
+              </div>  <!-- col-md-6 -->
+            </div>  <!-- row -->
+          </div>  <!-- project-info col-md-8 -->
+        </div>  <!-- row -->
+
+      </article>
 
 
-  {% endfor %}
+      {% endfor %}
+    </div>  <!-- container -->
   </body>
 </html>
