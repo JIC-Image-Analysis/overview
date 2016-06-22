@@ -1,5 +1,11 @@
 ---
-description: Segment wheat leaves making use of anisotropy in the tissue structure
+name: Wheat leaf segmentation
+description: >
+  Software tries to segment noisy images of wheat leaves. The key feature
+  of the algorithm is that it makes use of the anisotropy in the tissue
+  structure to improve the segmentation. Several filters are applied to
+  remove poorly segmented cells. The resulting segmentation was good
+  enough to get estimates of cell lengths.
 customers:
   - Amelia Frizell-Armitage
   - Cristobal Uauy

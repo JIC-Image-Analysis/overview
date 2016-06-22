@@ -1,5 +1,10 @@
 ---
-description: Identify and characterise plasmodesmata
+name: Plasmodesmata identification and characterisation
+description: >
+  Images contained marker identifying callose deposits abundant in
+  plasmodesmata and stomata. Working on the 3D stack the bioimage anlaysis
+  identified spots that were likely to correspond to plasmodesmata and
+  calculated a number of descriptors for these regions.
 customers:
   - Cecilia Cheval
   - Christine Faulkner
