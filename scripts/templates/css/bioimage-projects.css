@@ -2,12 +2,25 @@ body {
   font-family: 'Open Sans', sans-serif;
 }
 
+
 h1, h2, h3, h4, h5, h6 {
   font-family: 'Oswald', sans-serif;
 }
 
+.container {
+  max-width: 120rem;
+}
+
+
 .project {
-  margin-top: 10px;
+  margin-bottom: 15px;
   padding: 10px 20px;
   box-shadow: 5px 5px 15px;
+}
+
+
+#jic-logo {
+  float: right;
+  margin: 0;
+  padding: 1em 0em 0em 1em;
 }

@@ -58,7 +58,7 @@ def load_template(template_fname):
 def copy_supporting_files():
     """Copy javascript, CSS and font files to output directory."""
 
-    support_dirs = ['css',]
+    support_dirs = ['css', 'images']
 #   support_dirs = ['js', 'css', 'fonts']
 
     for dirname in support_dirs:
