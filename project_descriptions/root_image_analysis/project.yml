@@ -1,5 +1,13 @@
 ---
-description: Analyse nuclear intensity on a per cell basis
+name: Root reconstruction and nuclear intensity analysis
+description: >
+  This code implements a quantitative image analysis pipeline for the
+  reconstruction of root cell volumes from confocal microscopy data. These
+  reconstructed cell volumes can be used to measure fluorescence intensity in
+  other channels in the confocal images.
 customers:
   - Scott Berry
   - Martin Howard
+public: True
+github: https://github.com/JIC-CSB/find-plasmodesmata
+publication: http://dx.doi.org/10.7554/eLife.07205
