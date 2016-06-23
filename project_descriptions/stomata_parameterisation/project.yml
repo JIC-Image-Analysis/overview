@@ -1,5 +1,11 @@
 ---
-description: Extract stomata shape descriptors from bright field micrographs
+name: Stomata characterisation
+description: >
+  Extract stomata shape descriptors from bright field micrographs.
+  In particular the code looks at the intensity profile across a
+  number of brightfield z-slices to work out how open a stoma is.
 customers:
   - Hugh Woolfenden
   - Richard Morris
+public: True
+github: https://github.com/JIC-Image-Analysis/stomata-characterisation
