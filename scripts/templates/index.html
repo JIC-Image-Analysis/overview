@@ -1,57 +1,31 @@
 {% extends "base.html" %}
 {% block content %}
 {% for proj in projects %}
-<article class="project">
-  <header>
-    <h2>{{ proj.info["name"] }}</h2>
-  </header>
 
-  <div class="row">
-    <div class="col-md-4">
-      {% if proj.image_fpath %}
-      <figure>
-        <img class="img-responsive" src="{{ proj.image_fpath }}" alt="Image illustrating algorithm" />
-      </figure>
-      {% endif %}
-    </div>  <!-- col-md-4 -->
+   {% if loop.index0 % 3 == 0 %}
+      {% if not loop.first %}
+   </div>  <!-- row -->
+   {% endif %}
+   <div class="row">
+   {% endif %}
 
-    <div class="col-md-8">
-      <section>
-        <p>{{ proj.info["description"] }}</p>
-      </section>
+     <div class="col-md-4">
+       <div class="thumbnail">
+         <a href="portfolio.html#{{ proj.slug }}">
+           <img class="img-responsive" src="{{ proj.image_fpath }}" alt="Image illustrating algorithm" />
+         </a>
+         <div class="caption">
+           <h4>{{ proj.info["name"] }}</h4>
+           <p>{{ proj.info["description"] }}</p>
+           <p><a href="portfolio.html#{{ proj.slug }}" class="btn btn-primary" role="button">More info</a></p>
+         </div>
+       </div>  <!-- thumbnail -->
+     </div>  <!-- col -->
 
-      <div class="row">
 
-        <div class="col-md-4">
-          <section>
-            <h4>Project supporting</h4>
+   {% if loop.last and (loop.length is not divisibleby(3)) %}
+   </div>  <!-- row -->
+   {% endif %}
 
-            {% for name in proj.info["customers"] %}
-            <ul>
-              <li>{{ name }}</li>
-            </ul>
-            {% endfor %}
-          </section>
-        </div>  <!-- col-md-4 -->
-
-        <div class="col-md-7">
-          <section>
-            <h4>Links</h4>
-            <ul>
-            {% if "doi" in proj.info %}
-            <li>Publication DOI: <a href="http://dx.doi.org/{{ proj.info['doi'] }}">{{ proj.info['doi'] }}</a></li>
-            {% endif %}
-            {% if "github" in proj.info %}
-            <li>Source code: <a href="{{ proj.info['github'] }}">{{ proj.info['github'] }}</a></li>
-            {% endif %}
-            </ul>
-          </section>
-        </div>  <!-- col-md-7 -->
-
-      </div>  <!-- row -->
-    </div>  <!-- project-info col-md-8 -->
-  </div>  <!-- row -->
-
-</article>
 {% endfor %}
 {% endblock %}
