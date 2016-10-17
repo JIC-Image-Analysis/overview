@@ -1,5 +1,13 @@
 ---
-description: Analyse yeast growth inhibition profile from photos
+name: Yeast growth inhibition analysis
+description: >
+  Images have a disk in the centre, a halo of yeast death radiating from it,
+  and then a thick yeast lawn. The code quantifies intensities in lines
+  radiating out from the centre to illustrate differences between mutants in
+  an unbiased manner. The plot on the right shows line profiles from
+  different mutants.
 customers:
   - Nuno Leitao
   - Giles Oldroyd
+public: True
+github: https://github.com/JIC-Image-Analysis/yeast_growth
