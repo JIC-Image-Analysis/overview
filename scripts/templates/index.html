@@ -1,75 +1,57 @@
-<html>
-  <head>
-    <title>Bioimage analysis at JIC</title>
-    <meta charset="utf-8"/>
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans|Oswald" rel="stylesheet"> 
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="css/bioimage-projects.css">
-  </head>
-  <body>
-    <div class="container content">
-        <img id="jic-logo" class="img-responsive" src="images/john-innes-logo.png" alt="John Innes Logo">
-      <div class="jumbotron">
-        <h1>Bioimage Analysis</h1>
-        <p>Scientific Computing's bioimage analysis projects at the John Innes Centre</p>
-      </div>  <!-- page-header -->
-      {% for proj in projects %}
+{% extends "base.html" %}
+{% block content %}
+{% for proj in projects %}
+<article class="project">
+  <header>
+    <h2>{{ proj.info["name"] }}</h2>
+  </header>
 
-      <article class="project">
-        <header>
-          <h2>{{ proj.info["name"] }}</h2>
-        </header>
+  <div class="row">
+    <div class="col-md-4">
+      {% if proj.image_fpath %}
+      <figure>
+        <img class="img-responsive" src="{{ proj.image_fpath }}" alt="Image illustrating algorithm" />
+      </figure>
+      {% endif %}
+    </div>  <!-- col-md-4 -->
 
-        <div class="row">
-          <div class="col-md-4">
-            {% if proj.image_fpath %}
-            <figure>
-              <img class="img-responsive" src="{{ proj.image_fpath }}" alt="Image illustrating algorithm" />
-            </figure>
+    <div class="col-md-8">
+      <section>
+        <p>{{ proj.info["description"] }}</p>
+      </section>
+
+      <div class="row">
+
+        <div class="col-md-4">
+          <section>
+            <h4>Project supporting</h4>
+
+            {% for name in proj.info["customers"] %}
+            <ul>
+              <li>{{ name }}</li>
+            </ul>
+            {% endfor %}
+          </section>
+        </div>  <!-- col-md-4 -->
+
+        <div class="col-md-7">
+          <section>
+            <h4>Links</h4>
+            <ul>
+            {% if "doi" in proj.info %}
+            <li>Publication DOI: <a href="http://dx.doi.org/{{ proj.info['doi'] }}">{{ proj.info['doi'] }}</a></li>
             {% endif %}
-          </div>  <!-- col-md-4 -->
+            {% if "github" in proj.info %}
+            <li>Source code: <a href="{{ proj.info['github'] }}">{{ proj.info['github'] }}</a></li>
+            {% endif %}
+            </ul>
+          </section>
+        </div>  <!-- col-md-7 -->
 
-          <div class="col-md-8">
-            <section>
-              <p>{{ proj.info["description"] }}</p>
-            </section>
+      </div>  <!-- row -->
+    </div>  <!-- project-info col-md-8 -->
+  </div>  <!-- row -->
 
-            <div class="row">
-
-              <div class="col-md-4">
-                <section>
-                  <h4>Project supporting</h4>
-
-                  {% for name in proj.info["customers"] %}
-                  <ul>
-                    <li>{{ name }}</li>
-                  </ul>
-                  {% endfor %}
-                </section>
-              </div>  <!-- col-md-4 -->
-
-              <div class="col-md-7">
-                <section>
-                  <h4>Links</h4>
-                  <ul>
-                  {% if "doi" in proj.info %}
-                  <li>Publication DOI: <a href="http://dx.doi.org/{{ proj.info['doi'] }}">{{ proj.info['doi'] }}</a></li>
-                  {% endif %}
-                  {% if "github" in proj.info %}
-                  <li>Source code: <a href="{{ proj.info['github'] }}">{{ proj.info['github'] }}</a></li>
-                  {% endif %}
-                  </ul>
-                </section>
-              </div>  <!-- col-md-7 -->
-
-            </div>  <!-- row -->
-          </div>  <!-- project-info col-md-8 -->
-        </div>  <!-- row -->
-
-      </article>
-
-
-      {% endfor %}
-    </div>  <!-- container -->
-  </body>
-</html>
+</article>
+{% endfor %}
+{% endblock %}
