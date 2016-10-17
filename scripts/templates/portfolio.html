@@ -1,4 +1,11 @@
 {% extends "base.html" %}
+
+{% block navbar_links %}
+<li><a href="index.html">Home</a></li>
+<li class="active"><a href="#">Portfolio</a></li>
+<li><a href="about.html">About</a></li>
+{% endblock %}
+
 {% block content %}
 {% for proj in projects %}
 <article class="project">
