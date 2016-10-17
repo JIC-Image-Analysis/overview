@@ -17,6 +17,7 @@ BUILD_DIR = os.path.join(BASE_DIR, "build")
 
 
 INDEX_TEMPLATE_FNAME = "index.html"
+PORTFOLIO_TEMPLATE_FNAME = "portfolio.html"
 ABOUT_TEMPLATE_FNAME = "about.html"
 
 
@@ -80,6 +81,7 @@ def build_site():
         proj = BioimageProject(proj_dir)
         if "public" in proj.info and proj.info["public"]:
             projects.append(proj)
+
     index_template = load_template(INDEX_TEMPLATE_FNAME)
     index_html = index_template.render(projects=projects)
     index_fpath = os.path.join(BUILD_DIR, "index.html")
@@ -91,6 +93,13 @@ def build_site():
     about_fpath = os.path.join(BUILD_DIR, "about.html")
     with open(about_fpath, "w") as fh:
         fh.write(about_html)
+
+    portfolio_template = load_template(PORTFOLIO_TEMPLATE_FNAME)
+    portfolio_html = portfolio_template.render(projects=projects)
+    portfolio_fpath = os.path.join(BUILD_DIR, "portfolio.html")
+    with open(portfolio_fpath, "w") as fh:
+        fh.write(portfolio_html)
+
 
 def main():
     build_site()
