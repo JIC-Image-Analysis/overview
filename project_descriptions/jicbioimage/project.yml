@@ -1,5 +1,13 @@
 ---
-name: Framework to make it easy to analyse microscopy data
+name: "jicbioimage: a tool for automated and reproducible bioimage analysis"
+description: >
+  Python tool that allows users to quickly view and explore microscopy data;
+  generate reproducible analyses, encoding a complete history of image
+  transformations from raw data to final result; and scale up analyses from
+  initial exploration to high throughput processing pipelines, with a minimal
+  amount of extra effort.
 customers:
   - Tjelvar Olsson
   - Matthew Hartley
+public: True
+github: https://github.com/JIC-CSB/jicbioimage
