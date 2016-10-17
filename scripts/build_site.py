@@ -17,6 +17,7 @@ BUILD_DIR = os.path.join(BASE_DIR, "build")
 
 
 INDEX_TEMPLATE_FNAME = "index.html"
+ABOUT_TEMPLATE_FNAME = "about.html"
 
 
 class BioimageProject(object):
@@ -79,13 +80,17 @@ def build_site():
         proj = BioimageProject(proj_dir)
         if "public" in proj.info and proj.info["public"]:
             projects.append(proj)
-    template = load_template(INDEX_TEMPLATE_FNAME)
-    html = template.render(projects=projects)
-
+    index_template = load_template(INDEX_TEMPLATE_FNAME)
+    index_html = index_template.render(projects=projects)
     index_fpath = os.path.join(BUILD_DIR, "index.html")
     with open(index_fpath, "w") as fh:
-        fh.write(html)
+        fh.write(index_html)
 
+    about_template = load_template(ABOUT_TEMPLATE_FNAME)
+    about_html = about_template.render()
+    about_fpath = os.path.join(BUILD_DIR, "about.html")
+    with open(about_fpath, "w") as fh:
+        fh.write(about_html)
 
 def main():
     build_site()
