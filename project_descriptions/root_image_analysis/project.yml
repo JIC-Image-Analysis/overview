@@ -11,3 +11,4 @@ customers:
 public: True
 github: https://github.com/JIC-CSB/find-plasmodesmata
 doi: 10.7554/eLife.07205
+featured: True

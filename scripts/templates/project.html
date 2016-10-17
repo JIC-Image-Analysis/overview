@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+
+{% block navbar_links %}
+<li><a href="index.html">Home</a></li>
+<li><a href="portfolio.html">Portfolio</a></li>
+<li><a href="about.html">About</a></li>
+{% endblock %}
+
+{% block content %}
+<article class="project">
+  <header>
+    <h2>{{ project.info["name"] }}</h2>
+  </header>
+
+  <div class="row">
+    <div class="col-md-4">
+      {% if project.image_fpath %}
+      <figure>
+        <img class="img-responsive" src="{{ project.image_fpath }}" alt="Image illustrating algorithm" />
+      </figure>
+      {% endif %}
+    </div>  <!-- col-md-4 -->
+
+    <div class="col-md-8">
+      <section>
+        <p>{{ project.info["description"] }}</p>
+      </section>
+
+      <div class="row">
+
+        <div class="col-md-4">
+          <section>
+            <h4>Project supporting</h4>
+
+            {% for name in project.info["customers"] %}
+            <ul>
+              <li>{{ name }}</li>
+            </ul>
+            {% endfor %}
+          </section>
+        </div>  <!-- col-md-4 -->
+
+        <div class="col-md-7">
+          <section>
+            <h4>Links</h4>
+            <ul>
+            {% if "doi" in project.info %}
+            <li>Publication DOI: <a href="http://dx.doi.org/{{ project.info['doi'] }}">{{ project.info['doi'] }}</a></li>
+            {% endif %}
+            {% if "github" in project.info %}
+            <li>Source code: <a href="{{ project.info['github'] }}">{{ project.info['github'] }}</a></li>
+            {% endif %}
+            </ul>
+          </section>
+        </div>  <!-- col-md-7 -->
+
+      </div>  <!-- row -->
+    </div>  <!-- project-info col-md-8 -->
+  </div>  <!-- row -->
+
+</article>
+{% endblock %}

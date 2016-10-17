@@ -7,58 +7,5 @@
 {% endblock %}
 
 {% block content %}
-{% for proj in projects %}
-<article class="project">
-  <header>
-    <h2 id="{{ proj.slug }}">{{ proj.info["name"] }}</h2>
-  </header>
-
-  <div class="row">
-    <div class="col-md-4">
-      {% if proj.image_fpath %}
-      <figure>
-        <img class="img-responsive" src="{{ proj.image_fpath }}" alt="Image illustrating algorithm" />
-      </figure>
-      {% endif %}
-    </div>  <!-- col-md-4 -->
-
-    <div class="col-md-8">
-      <section>
-        <p>{{ proj.info["description"] }}</p>
-      </section>
-
-      <div class="row">
-
-        <div class="col-md-4">
-          <section>
-            <h4>Project supporting</h4>
-
-            {% for name in proj.info["customers"] %}
-            <ul>
-              <li>{{ name }}</li>
-            </ul>
-            {% endfor %}
-          </section>
-        </div>  <!-- col-md-4 -->
-
-        <div class="col-md-7">
-          <section>
-            <h4>Links</h4>
-            <ul>
-            {% if "doi" in proj.info %}
-            <li>Publication DOI: <a href="http://dx.doi.org/{{ proj.info['doi'] }}">{{ proj.info['doi'] }}</a></li>
-            {% endif %}
-            {% if "github" in proj.info %}
-            <li>Source code: <a href="{{ proj.info['github'] }}">{{ proj.info['github'] }}</a></li>
-            {% endif %}
-            </ul>
-          </section>
-        </div>  <!-- col-md-7 -->
-
-      </div>  <!-- row -->
-    </div>  <!-- project-info col-md-8 -->
-  </div>  <!-- row -->
-
-</article>
-{% endfor %}
+{% include "thumbnails.html" %}
 {% endblock %}

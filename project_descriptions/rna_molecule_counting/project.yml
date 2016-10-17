@@ -12,3 +12,4 @@ customers:
 public: True
 github: https://github.com/JIC-CSB/FISHcount
 doi: 10.1186/s13007-016-0114-x
+featured: True

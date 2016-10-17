@@ -16,11 +16,6 @@ PROJECTS_DIR = os.path.join(BASE_DIR, "project_descriptions")
 BUILD_DIR = os.path.join(BASE_DIR, "build")
 
 
-INDEX_TEMPLATE_FNAME = "index.html"
-PORTFOLIO_TEMPLATE_FNAME = "portfolio.html"
-ABOUT_TEMPLATE_FNAME = "about.html"
-
-
 class BioimageProject(object):
 
     def __init__(self, directory):
@@ -35,6 +30,7 @@ class BioimageProject(object):
         info_fpath = os.path.join(self.directory, "project.yml")
         self.info = yaml.load(file(info_fpath))
         self.slug = slugify(unicode(self.info["name"]))
+        self.url = self.slug + ".html"
 
     def _image_init(self):
         self.image_fpath = None
@@ -77,13 +73,26 @@ def build_site():
     copy_supporting_files()
 
     projects = []
+    featured_projects = []
     for proj_name in os.listdir(PROJECTS_DIR):
         proj_dir = os.path.join(PROJECTS_DIR, proj_name)
         proj = BioimageProject(proj_dir)
         if "public" in proj.info and proj.info["public"]:
             projects.append(proj)
+            if "featured" in proj.info and proj.info["featured"]:
+                featured_projects.append(proj)
 
-    for page in ("index.html", "portfolio.html", "about.html"):
+
+    for proj in projects:
+        template = load_template("project.html")
+        html = template.render(project=proj)
+        fpath = os.path.join(BUILD_DIR, proj.url)
+        with open(fpath, "w") as fh:
+            fh.write(html)
+
+    for page, projects in (("index.html", featured_projects),
+                           ("portfolio.html", projects),
+                           ("about.html", None)):
         template = load_template(page)
         html = template.render(projects=projects)
         fpath = os.path.join(BUILD_DIR, page)

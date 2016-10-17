@@ -1,0 +1,29 @@
+{% for proj in projects %}
+
+   {% if loop.index0 % 3 == 0 %}
+      {% if not loop.first %}
+   </div>  <!-- row -->
+   {% endif %}
+   <div class="row">
+   {% endif %}
+
+     <div class="col-md-4">
+       <div class="thumbnail">
+         <a href="{{ proj.url }}">
+           <img class="img-responsive" src="{{ proj.image_fpath }}" alt="Image illustrating algorithm" />
+         </a>
+         <div class="caption">
+           <h4>{{ proj.info["name"] }}</h4>
+           <p>{{ proj.info["description"] }}</p>
+           <p><a href="{{ proj.url }}" class="btn btn-primary" role="button">More info</a></p>
+         </div>
+       </div>  <!-- thumbnail -->
+     </div>  <!-- col -->
+
+
+   {% if loop.last and (loop.length is not divisibleby(3)) %}
+   </div>  <!-- row -->
+   {% endif %}
+
+{% endfor %}
+
