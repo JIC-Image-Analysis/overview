@@ -34,6 +34,7 @@ class BioimageProject(object):
     def _info_init(self):
         info_fpath = os.path.join(self.directory, "project.yml")
         self.info = yaml.load(file(info_fpath))
+        self.slug = slugify(unicode(self.info["name"]))
 
     def _image_init(self):
         self.image_fpath = None
@@ -44,7 +45,7 @@ class BioimageProject(object):
         if os.path.isfile(input_image):
             if not os.path.isdir(image_dir):
                 os.makedirs(image_dir)
-            image_fname = slugify(unicode(self.info["name"])) + ".png"
+            image_fname = self.slug + ".png"
             output_image = os.path.join(image_dir, image_fname)
             shutil.copy(input_image, output_image)
             self.image_fpath = os.path.join("images", image_fname)
