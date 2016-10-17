@@ -82,23 +82,12 @@ def build_site():
         if "public" in proj.info and proj.info["public"]:
             projects.append(proj)
 
-    index_template = load_template(INDEX_TEMPLATE_FNAME)
-    index_html = index_template.render(projects=projects)
-    index_fpath = os.path.join(BUILD_DIR, "index.html")
-    with open(index_fpath, "w") as fh:
-        fh.write(index_html)
-
-    about_template = load_template(ABOUT_TEMPLATE_FNAME)
-    about_html = about_template.render()
-    about_fpath = os.path.join(BUILD_DIR, "about.html")
-    with open(about_fpath, "w") as fh:
-        fh.write(about_html)
-
-    portfolio_template = load_template(PORTFOLIO_TEMPLATE_FNAME)
-    portfolio_html = portfolio_template.render(projects=projects)
-    portfolio_fpath = os.path.join(BUILD_DIR, "portfolio.html")
-    with open(portfolio_fpath, "w") as fh:
-        fh.write(portfolio_html)
+    for page in ("index.html", "portfolio.html", "about.html"):
+        template = load_template(page)
+        html = template.render(projects=projects)
+        fpath = os.path.join(BUILD_DIR, page)
+        with open(fpath, "w") as fh:
+            fh.write(html)
 
 
 def main():
