@@ -1,5 +1,5 @@
 ---
-description: Segment RNA FISH microgaph probes in 3D
+name: Segment RNA FISH microgaph probes in 3D
 customers:
   - Robert Ietswaart
   - Martin Howard

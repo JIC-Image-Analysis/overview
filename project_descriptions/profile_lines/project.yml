@@ -1,5 +1,5 @@
 ---
-description: Extract kymograph intensity profiles corresponding to hand drawn lines
+name: Extract kymograph intensity profiles corresponding to hand drawn lines
 customers:
   - Susan Shlimpert
   - Mark Buttner

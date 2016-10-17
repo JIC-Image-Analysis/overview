@@ -1,5 +1,5 @@
 ---
-description: Segment differential interference micrographs of leaves into cells
+name: Segment differential interference micrographs of leaves into cells
 customers:
   - Nick Pullen
   - Steve Penfield

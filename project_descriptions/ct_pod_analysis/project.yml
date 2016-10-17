@@ -1,5 +1,5 @@
 ---
-description: Analyse seeds in pods from computed tomography scan data
+name: Analyse seeds in pods from computed tomography scan data
 customers:
   - Rachel Wells
   - Lars Ostergaard

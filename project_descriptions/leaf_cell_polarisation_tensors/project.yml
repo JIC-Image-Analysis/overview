@@ -1,5 +1,5 @@
 ---
-description: Identify and edit tensors from polarity marker to cell centroids
+name: Identify and edit tensors from polarity marker to cell centroids
 customers:
   - Catherine Mansfield
   - Jordi Chan
