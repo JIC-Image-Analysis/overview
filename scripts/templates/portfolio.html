@@ -3,7 +3,7 @@
 {% for proj in projects %}
 <article class="project">
   <header>
-    <h2>{{ proj.info["name"] }}</h2>
+    <h2 id="{{ proj.slug }}">{{ proj.info["name"] }}</h2>
   </header>
 
   <div class="row">
