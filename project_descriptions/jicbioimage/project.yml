@@ -12,3 +12,4 @@ customers:
 public: True
 github: https://github.com/JIC-CSB/jicbioimage
 featured: True
+is_jicbioimage: True

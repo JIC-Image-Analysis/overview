@@ -74,6 +74,7 @@ def build_site():
 
     projects = []
     featured_projects = []
+    jicbioimage = None
     for proj_name in os.listdir(PROJECTS_DIR):
         proj_dir = os.path.join(PROJECTS_DIR, proj_name)
         proj = BioimageProject(proj_dir)
@@ -81,6 +82,8 @@ def build_site():
             projects.append(proj)
             if "featured" in proj.info and proj.info["featured"]:
                 featured_projects.append(proj)
+            if "is_jicbioimage" in proj.info and proj.info["is_jicbioimage"]:
+                jicbioimage = proj
 
 
     for proj in projects:
@@ -92,7 +95,7 @@ def build_site():
 
     for page, projects in (("index.html", featured_projects),
                            ("portfolio.html", projects),
-                           ("about.html", None)):
+                           ("about.html", [jicbioimage,])):
         template = load_template(page)
         html = template.render(projects=projects)
         fpath = os.path.join(BUILD_DIR, page)
