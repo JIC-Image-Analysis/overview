@@ -11,5 +11,6 @@ customers:
   - Matthew Hartley
 public: True
 github: https://github.com/JIC-CSB/jicbioimage
+doi: 10.7717/peerj.2674
 featured: True
 is_jicbioimage: True
